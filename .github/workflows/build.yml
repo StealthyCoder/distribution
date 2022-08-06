@@ -53,10 +53,6 @@ jobs:
         with:
           targets: artifact-all
       -
-        name: Move artifacts
-        run: |
-          mv ./bin/**/* ./bin/
-      -
         name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
