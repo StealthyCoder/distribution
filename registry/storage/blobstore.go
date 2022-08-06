@@ -2,7 +2,9 @@ package storage
 
 import (
 	"context"
+	"fmt"
 	"path"
+	"strings"
 
 	"github.com/docker/distribution"
 	dcontext "github.com/docker/distribution/context"
@@ -142,6 +144,15 @@ func (bs *blobStore) readlink(ctx context.Context, path string) (digest.Digest, 
 	content, err := bs.driver.GetContent(ctx, path)
 	if err != nil {
 		return "", err
+	}
+
+	if len(content) == 0 {
+		parts := strings.Split(path, "/")
+		num := len(parts)
+		if parts[num-1] == "link" {
+			dcontext.GetLogger(ctx).Errorf("FIO HACK FOR DOCKER LINK ISSUE WITH GCS %s", path)
+			content = []byte(fmt.Sprintf("%s:%s", parts[num-3], parts[num-2]))
+		}
 	}
 
 	linked, err := digest.Parse(string(content))
