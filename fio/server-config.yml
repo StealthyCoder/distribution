@@ -1,0 +1,21 @@
+version: 0.1
+auth:
+  token:
+    issuer: notary-auth.foundries.io
+    realm: https://hub.foundries.io/token-auth/
+    rootcertbundle: ./fio/EC_509_PEM
+    service: registry
+http:
+  addr: :5000
+  debug:
+    addr: :5001
+    prometheus:
+      enabled: true
+      path: /metrics
+  headers:
+    X-Content-Type-Options:
+    - nosniff
+storage:
+  gcs:
+    bucket: subscriber_registry
+    keyfile: /tmp/gcs.json
