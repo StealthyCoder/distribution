@@ -8,9 +8,9 @@ import (
 	"path"
 	"time"
 
-	"github.com/docker/distribution"
-	dcontext "github.com/docker/distribution/context"
-	storagedriver "github.com/docker/distribution/registry/storage/driver"
+	"github.com/StealthyCoder/distribution"
+	dcontext "github.com/StealthyCoder/distribution/context"
+	storagedriver "github.com/StealthyCoder/distribution/registry/storage/driver"
 	"github.com/opencontainers/go-digest"
 	"github.com/sirupsen/logrus"
 )

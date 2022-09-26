@@ -9,9 +9,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/docker/distribution/configuration"
-	"github.com/docker/distribution/context"
-	"github.com/docker/distribution/health"
+	"github.com/StealthyCoder/distribution/configuration"
+	"github.com/StealthyCoder/distribution/context"
+	"github.com/StealthyCoder/distribution/health"
 )
 
 func TestFileHealthCheck(t *testing.T) {

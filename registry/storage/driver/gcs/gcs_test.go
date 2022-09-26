@@ -1,3 +1,4 @@
+//go:build include_gcs
 // +build include_gcs
 
 package gcs
@@ -8,9 +9,9 @@ import (
 	"os"
 	"testing"
 
-	dcontext "github.com/docker/distribution/context"
-	storagedriver "github.com/docker/distribution/registry/storage/driver"
-	"github.com/docker/distribution/registry/storage/driver/testsuites"
+	dcontext "github.com/StealthyCoder/distribution/context"
+	storagedriver "github.com/StealthyCoder/distribution/registry/storage/driver"
+	"github.com/StealthyCoder/distribution/registry/storage/driver/testsuites"
 	"golang.org/x/oauth2"
 	"golang.org/x/oauth2/google"
 	"google.golang.org/api/googleapi"

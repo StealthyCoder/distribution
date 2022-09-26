@@ -1,3 +1,4 @@
+//go:build include_oss
 // +build include_oss
 
 package oss
@@ -8,10 +9,10 @@ import (
 	"strconv"
 	"testing"
 
+	"github.com/StealthyCoder/distribution/context"
+	storagedriver "github.com/StealthyCoder/distribution/registry/storage/driver"
+	"github.com/StealthyCoder/distribution/registry/storage/driver/testsuites"
 	alioss "github.com/denverdino/aliyungo/oss"
-	"github.com/docker/distribution/context"
-	storagedriver "github.com/docker/distribution/registry/storage/driver"
-	"github.com/docker/distribution/registry/storage/driver/testsuites"
 	"gopkg.in/check.v1"
 )
 

@@ -13,10 +13,10 @@ import (
 	"strings"
 	"time"
 
+	dcontext "github.com/StealthyCoder/distribution/context"
+	storagedriver "github.com/StealthyCoder/distribution/registry/storage/driver"
+	storagemiddleware "github.com/StealthyCoder/distribution/registry/storage/driver/middleware"
 	"github.com/aws/aws-sdk-go/service/cloudfront/sign"
-	dcontext "github.com/docker/distribution/context"
-	storagedriver "github.com/docker/distribution/registry/storage/driver"
-	storagemiddleware "github.com/docker/distribution/registry/storage/driver/middleware"
 )
 
 // cloudFrontStorageMiddleware provides a simple implementation of layerHandler that

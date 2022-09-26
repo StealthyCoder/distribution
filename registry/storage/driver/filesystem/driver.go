@@ -11,9 +11,9 @@ import (
 	"path"
 	"time"
 
-	storagedriver "github.com/docker/distribution/registry/storage/driver"
-	"github.com/docker/distribution/registry/storage/driver/base"
-	"github.com/docker/distribution/registry/storage/driver/factory"
+	storagedriver "github.com/StealthyCoder/distribution/registry/storage/driver"
+	"github.com/StealthyCoder/distribution/registry/storage/driver/base"
+	"github.com/StealthyCoder/distribution/registry/storage/driver/factory"
 )
 
 const (

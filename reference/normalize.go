@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/docker/distribution/digestset"
+	"github.com/StealthyCoder/distribution/digestset"
 	"github.com/opencontainers/go-digest"
 )
 

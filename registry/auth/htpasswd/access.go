@@ -18,8 +18,8 @@ import (
 
 	"golang.org/x/crypto/bcrypt"
 
-	dcontext "github.com/docker/distribution/context"
-	"github.com/docker/distribution/registry/auth"
+	dcontext "github.com/StealthyCoder/distribution/context"
+	"github.com/StealthyCoder/distribution/registry/auth"
 )
 
 type accessController struct {

@@ -4,9 +4,9 @@ import (
 	"context"
 	"testing"
 
-	"github.com/docker/distribution"
-	"github.com/docker/distribution/reference"
-	"github.com/docker/distribution/registry/storage/driver/inmemory"
+	"github.com/StealthyCoder/distribution"
+	"github.com/StealthyCoder/distribution/reference"
+	"github.com/StealthyCoder/distribution/registry/storage/driver/inmemory"
 )
 
 type tagsTestEnv struct {

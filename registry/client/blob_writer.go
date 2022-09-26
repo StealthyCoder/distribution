@@ -9,7 +9,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/docker/distribution"
+	"github.com/StealthyCoder/distribution"
 )
 
 type httpBlobUpload struct {

@@ -4,9 +4,9 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/docker/distribution"
-	dcontext "github.com/docker/distribution/context"
-	"github.com/docker/distribution/manifest/manifestlist"
+	"github.com/StealthyCoder/distribution"
+	dcontext "github.com/StealthyCoder/distribution/context"
+	"github.com/StealthyCoder/distribution/manifest/manifestlist"
 	"github.com/opencontainers/go-digest"
 )
 

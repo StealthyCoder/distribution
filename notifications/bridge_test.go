@@ -3,11 +3,11 @@ package notifications
 import (
 	"testing"
 
-	"github.com/docker/distribution"
-	"github.com/docker/distribution/manifest/schema1"
-	"github.com/docker/distribution/reference"
-	v2 "github.com/docker/distribution/registry/api/v2"
-	"github.com/docker/distribution/uuid"
+	"github.com/StealthyCoder/distribution"
+	"github.com/StealthyCoder/distribution/manifest/schema1"
+	"github.com/StealthyCoder/distribution/reference"
+	v2 "github.com/StealthyCoder/distribution/registry/api/v2"
+	"github.com/StealthyCoder/distribution/uuid"
 	"github.com/docker/libtrust"
 	"github.com/opencontainers/go-digest"
 )

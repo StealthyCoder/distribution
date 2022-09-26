@@ -4,10 +4,10 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/docker/distribution"
-	"github.com/docker/distribution/context"
-	"github.com/docker/distribution/reference"
-	"github.com/docker/distribution/uuid"
+	"github.com/StealthyCoder/distribution"
+	"github.com/StealthyCoder/distribution/context"
+	"github.com/StealthyCoder/distribution/reference"
+	"github.com/StealthyCoder/distribution/uuid"
 	"github.com/opencontainers/go-digest"
 )
 

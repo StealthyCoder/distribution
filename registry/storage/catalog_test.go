@@ -7,12 +7,12 @@ import (
 	"math/rand"
 	"testing"
 
-	"github.com/docker/distribution"
-	"github.com/docker/distribution/reference"
-	"github.com/docker/distribution/registry/storage/cache/memory"
-	"github.com/docker/distribution/registry/storage/driver"
-	"github.com/docker/distribution/registry/storage/driver/inmemory"
-	"github.com/docker/distribution/testutil"
+	"github.com/StealthyCoder/distribution"
+	"github.com/StealthyCoder/distribution/reference"
+	"github.com/StealthyCoder/distribution/registry/storage/cache/memory"
+	"github.com/StealthyCoder/distribution/registry/storage/driver"
+	"github.com/StealthyCoder/distribution/registry/storage/driver/inmemory"
+	"github.com/StealthyCoder/distribution/testutil"
 	"github.com/opencontainers/go-digest"
 )
 

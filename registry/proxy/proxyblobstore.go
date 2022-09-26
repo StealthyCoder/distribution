@@ -7,10 +7,10 @@ import (
 	"strconv"
 	"sync"
 
-	"github.com/docker/distribution"
-	dcontext "github.com/docker/distribution/context"
-	"github.com/docker/distribution/reference"
-	"github.com/docker/distribution/registry/proxy/scheduler"
+	"github.com/StealthyCoder/distribution"
+	dcontext "github.com/StealthyCoder/distribution/context"
+	"github.com/StealthyCoder/distribution/reference"
+	"github.com/StealthyCoder/distribution/registry/proxy/scheduler"
 	"github.com/opencontainers/go-digest"
 )
 

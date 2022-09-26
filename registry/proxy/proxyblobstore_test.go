@@ -10,13 +10,13 @@ import (
 	"testing"
 	"time"
 
-	"github.com/docker/distribution"
-	"github.com/docker/distribution/reference"
-	"github.com/docker/distribution/registry/proxy/scheduler"
-	"github.com/docker/distribution/registry/storage"
-	"github.com/docker/distribution/registry/storage/cache/memory"
-	"github.com/docker/distribution/registry/storage/driver/filesystem"
-	"github.com/docker/distribution/registry/storage/driver/inmemory"
+	"github.com/StealthyCoder/distribution"
+	"github.com/StealthyCoder/distribution/reference"
+	"github.com/StealthyCoder/distribution/registry/proxy/scheduler"
+	"github.com/StealthyCoder/distribution/registry/storage"
+	"github.com/StealthyCoder/distribution/registry/storage/cache/memory"
+	"github.com/StealthyCoder/distribution/registry/storage/driver/filesystem"
+	"github.com/StealthyCoder/distribution/registry/storage/driver/inmemory"
 	"github.com/opencontainers/go-digest"
 )
 

@@ -8,9 +8,9 @@ import (
 	"strconv"
 	"testing"
 
-	"github.com/docker/distribution"
-	"github.com/docker/distribution/reference"
-	"github.com/docker/distribution/testutil"
+	"github.com/StealthyCoder/distribution"
+	"github.com/StealthyCoder/distribution/reference"
+	"github.com/StealthyCoder/distribution/testutil"
 	"github.com/opencontainers/go-digest"
 )
 

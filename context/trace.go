@@ -5,7 +5,7 @@ import (
 	"runtime"
 	"time"
 
-	"github.com/docker/distribution/uuid"
+	"github.com/StealthyCoder/distribution/uuid"
 )
 
 // WithTrace allocates a traced timing span in a new context. This allows a
