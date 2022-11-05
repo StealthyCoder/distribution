@@ -89,6 +89,10 @@ func (ms *manifestStore) Get(ctx context.Context, dgst digest.Digest, options ..
 		return nil, err
 	}
 
+	if len(content) == 0 {
+		return nil, nil
+	}
+
 	var versioned manifest.Versioned
 	if err = json.Unmarshal(content, &versioned); err != nil {
 		return nil, err

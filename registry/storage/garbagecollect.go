@@ -86,6 +86,10 @@ func MarkAndSweep(ctx context.Context, storageDriver driver.StorageDriver, regis
 			markSet[dgst] = struct{}{}
 
 			manifest, err := manifestService.Get(ctx, dgst)
+			if manifest == nil && err == nil {
+			  dcontext.GetLogger(ctx).Errorf("FIO HACK FOR DOCKER MANIFEST LINK ISSUE WITH GCS %s", dgst)
+				return nil
+			}
 			if err != nil {
 				return fmt.Errorf("failed to retrieve manifest for digest %v: %v", dgst, err)
 			}
