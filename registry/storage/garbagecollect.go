@@ -5,13 +5,14 @@ import (
 	"fmt"
 
 	"github.com/docker/distribution"
+	dcontext "github.com/docker/distribution/context"
 	"github.com/docker/distribution/reference"
 	"github.com/docker/distribution/registry/storage/driver"
 	"github.com/opencontainers/go-digest"
 )
 
-func emit(format string, a ...interface{}) {
-	fmt.Printf(format+"\n", a...)
+func emit(ctx context.Context, format string, a ...interface{}) {
+	dcontext.GetLogger(ctx).Printf(format+"\n", a...)
 }
 
 // GCOpts contains options for garbage collector
@@ -38,7 +39,7 @@ func MarkAndSweep(ctx context.Context, storageDriver driver.StorageDriver, regis
 	markSet := make(map[digest.Digest]struct{})
 	manifestArr := make([]ManifestDel, 0)
 	err := repositoryEnumerator.Enumerate(ctx, func(repoName string) error {
-		emit(repoName)
+		emit(ctx, repoName)
 
 		var err error
 		named, err := reference.WithName(repoName)
@@ -68,7 +69,7 @@ func MarkAndSweep(ctx context.Context, storageDriver driver.StorageDriver, regis
 					return fmt.Errorf("failed to retrieve tags for digest %v: %v", dgst, err)
 				}
 				if len(tags) == 0 {
-					emit("manifest eligible for deletion: %s", dgst)
+					emit(ctx, "manifest eligible for deletion: %s", dgst)
 					// fetch all tags from repository
 					// all of these tags could contain manifest in history
 					// which means that we need check (and delete) those references when deleting manifest
@@ -81,7 +82,7 @@ func MarkAndSweep(ctx context.Context, storageDriver driver.StorageDriver, regis
 				}
 			}
 			// Mark the manifest's blob
-			emit("%s: marking manifest %s ", repoName, dgst)
+			emit(ctx, "%s: marking manifest %s ", repoName, dgst)
 			markSet[dgst] = struct{}{}
 
 			manifest, err := manifestService.Get(ctx, dgst)
@@ -92,7 +93,7 @@ func MarkAndSweep(ctx context.Context, storageDriver driver.StorageDriver, regis
 			descriptors := manifest.References()
 			for _, descriptor := range descriptors {
 				markSet[descriptor.Digest] = struct{}{}
-				emit("%s: marking blob %s", repoName, descriptor.Digest)
+				emit(ctx, "%s: marking blob %s", repoName, descriptor.Digest)
 			}
 
 			return nil
@@ -136,9 +137,9 @@ func MarkAndSweep(ctx context.Context, storageDriver driver.StorageDriver, regis
 	if err != nil {
 		return fmt.Errorf("error enumerating blobs: %v", err)
 	}
-	emit("\n%d blobs marked, %d blobs and %d manifests eligible for deletion", len(markSet), len(deleteSet), len(manifestArr))
+	emit(ctx, "\n%d blobs marked, %d blobs and %d manifests eligible for deletion", len(markSet), len(deleteSet), len(manifestArr))
 	for dgst := range deleteSet {
-		emit("blob eligible for deletion: %s", dgst)
+		emit(ctx, "blob eligible for deletion: %s", dgst)
 		if opts.DryRun {
 			continue
 		}
