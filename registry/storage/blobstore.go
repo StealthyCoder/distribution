@@ -152,6 +152,11 @@ func (bs *blobStore) readlink(ctx context.Context, path string) (digest.Digest, 
 		if parts[num-1] == "link" {
 			dcontext.GetLogger(ctx).Errorf("FIO HACK FOR DOCKER LINK ISSUE WITH GCS %s", path)
 			content = []byte(fmt.Sprintf("%s:%s", parts[num-3], parts[num-2]))
+			if _, err := digest.Parse(string(content)); err != nil {
+				dcontext.GetLogger(ctx).Errorf("FIO HACK FAILED TO PRODUCE A VALID DIGEST VALUE %s", string(content))
+				return "", &FioDigestError{}
+			}
+
 		}
 	}
 

@@ -303,6 +303,13 @@ func (d *driver) Reader(context context.Context, path string, offset int64) (io.
 				}
 				return nil, storagedriver.InvalidOffsetError{Path: path, Offset: offset}
 			}
+
+			if res.StatusCode == http.StatusServiceUnavailable {
+				return nil, &storagedriver.FioError{StatusCode: res.StatusCode}
+			}
+			if res.StatusCode == http.StatusInternalServerError {
+				return nil, &storagedriver.FioError{StatusCode: res.StatusCode}
+			}
 		}
 		return nil, err
 	}
@@ -639,7 +646,7 @@ func (d *driver) Stat(context context.Context, path string) (storagedriver.FileI
 }
 
 // List returns a list of the objects that are direct descendants of the
-//given path.
+// given path.
 func (d *driver) List(context context.Context, path string) ([]string, error) {
 	var query *storage.Query
 	query = &storage.Query{}

@@ -66,8 +66,18 @@ func MarkAndSweep(ctx context.Context, storageDriver driver.StorageDriver, regis
 				// fetch all tags where this manifest is the latest one
 				tags, err := repository.Tags(ctx).Lookup(ctx, distribution.Descriptor{Digest: dgst})
 				if err != nil {
-					return fmt.Errorf("failed to retrieve tags for digest %v: %v", dgst, err)
+					switch e := err.(type) {
+					case FioDigestError:
+						dcontext.GetLogger(ctx).Errorf("%s", e)
+						return nil
+					case driver.FioError:
+						dcontext.GetLogger(ctx).Errorf("FIO HACK FOR DOCKER MANIFEST %d GCS ERROR: %s", err.(driver.FioError).StatusCode, dgst)
+						return nil
+					default:
+						return fmt.Errorf("failed to retrieve tags for digest %v: %v", dgst, err)
+					}
 				}
+
 				if len(tags) == 0 {
 					emit(ctx, "manifest eligible for deletion: %s", dgst)
 					// fetch all tags from repository
@@ -87,7 +97,7 @@ func MarkAndSweep(ctx context.Context, storageDriver driver.StorageDriver, regis
 
 			manifest, err := manifestService.Get(ctx, dgst)
 			if manifest == nil && err == nil {
-			  dcontext.GetLogger(ctx).Errorf("FIO HACK FOR DOCKER MANIFEST LINK ISSUE WITH GCS %s", dgst)
+				dcontext.GetLogger(ctx).Errorf("FIO HACK FOR DOCKER MANIFEST LINK ISSUE WITH GCS %s", dgst)
 				return nil
 			}
 			if err != nil {

@@ -7,3 +7,9 @@ import "fmt"
 func pushError(errors []error, path string, err error) []error {
 	return append(errors, fmt.Errorf("%s: %s", path, err))
 }
+
+type FioDigestError struct{}
+
+func (f FioDigestError) Error() string {
+	return "FIO HACK DIGEST ERROR"
+}

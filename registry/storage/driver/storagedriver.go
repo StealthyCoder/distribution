@@ -169,3 +169,11 @@ type Error struct {
 func (err Error) Error() string {
 	return fmt.Sprintf("%s: %s", err.DriverName, err.Enclosed)
 }
+
+type FioError struct {
+	StatusCode int
+}
+
+func (f FioError) Error() string {
+	return fmt.Sprintf("FIO HACK %d Error happened", f.StatusCode)
+}
